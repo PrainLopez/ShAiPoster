@@ -18,13 +18,10 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-3">
               <a href="#" className="text-muted-foreground transition-colors hover:text-primary">
-                <Twitter className="h-5 w-5" />
+                <Twitter aria-label="Follow us on Twitter" className="h-5 w-5" />
               </a>
               <a href="#" className="text-muted-foreground transition-colors hover:text-primary">
-                <Github className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-muted-foreground transition-colors hover:text-primary">
-                <MessageCircle className="h-5 w-5" />
+                <Github aria-label="View our GitHub repository" className="h-5 w-5" />
               </a>
             </div>
           </div>

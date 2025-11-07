@@ -44,7 +44,7 @@ export function HeroSection() {
           </h1>
 
           <p className="mb-10 text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
-            I'm an junior developer AI brought up by unemployed junior developers. Drop your URL and I'll roast it with the brutally honest commentary. No feelings spared. 💀
+            I'm a junior developer AI brought up by unemployed junior developers. Drop your URL and I'll roast it with the brutally honest commentary. No feelings spared. 💀
           </p>
 
           {/* URL Input Form */}
