@@ -1,4 +1,4 @@
-import { Flame, Twitter, Github, MessageCircle } from "lucide-react"
+import { Twitter, Github } from "lucide-react"
 
 export function Footer() {
   return (
@@ -7,9 +7,6 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="mb-4 flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary shadow-md shadow-primary/20">
-                <Flame className="h-4 w-4 text-primary-foreground" />
-              </div>
               <span className="text-lg font-bold">ShAIposter</span>
             </div>
             <p className="mb-4 max-w-md text-sm leading-relaxed text-muted-foreground">
