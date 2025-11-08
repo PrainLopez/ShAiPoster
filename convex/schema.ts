@@ -7,9 +7,15 @@ import { v } from "convex/values";
 // The schema provides more precise TypeScript types.
 export default defineSchema({
   posts: defineTable({
-    id: v.id('posts'),
-    postUrl: v.string(),
-    promptInupt: v.string(),
-    modelResponse: v.array(v.string()),
+    userId: v.string(),
+    did: v.optional(v.string()),
+    text: v.optional(v.string()),
+    imageUrl: v.optional(v.array(v.string())),
   }),
-})
+  comments: defineTable({
+    postId: v.id('posts'),
+    content: v.optional(v.string()),
+  }),
+});
+
+
