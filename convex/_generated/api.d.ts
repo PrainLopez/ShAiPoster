@@ -9,6 +9,7 @@
  */
 
 import type * as comment from "../comment.js";
+import type * as http from "../http.js";
 import type * as lib_ai from "../lib/ai.js";
 import type * as lib_bluesky from "../lib/bluesky.js";
 import type * as post from "../post.js";
@@ -29,6 +30,7 @@ import type {
  */
 declare const fullApi: ApiFromModules<{
   comment: typeof comment;
+  http: typeof http;
   "lib/ai": typeof lib_ai;
   "lib/bluesky": typeof lib_bluesky;
   post: typeof post;
