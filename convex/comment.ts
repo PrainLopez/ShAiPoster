@@ -1,9 +1,8 @@
 import { v } from 'convex/values'
-import { internalAction, mutation, query,action, internalMutation } from './_generated/server'
-import { api, internal } from './_generated/api'
-import { getBlueSkyPostFromUrl } from './lib/bluesky';
+import { action, internalMutation } from './_generated/server'
+import { internal } from './_generated/api'
 import { ai,model } from './lib/ai';
-import { Id } from './_generated/dataModel';
+import type { Id } from './_generated/dataModel';
 
 export const addComment = internalMutation({
     args: {

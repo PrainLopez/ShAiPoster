@@ -1,6 +1,6 @@
 import { v } from 'convex/values'
-import { action, internalAction, internalMutation, internalQuery, mutation, query, } from './_generated/server'
-import { api, internal } from './_generated/api'
+import { internalAction, internalMutation, internalQuery, mutation, query } from './_generated/server'
+import { internal } from './_generated/api'
 import { getBlueSkyPostFromUrl } from './lib/bluesky';
 
 export const getPosts = query({
