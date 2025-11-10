@@ -20,25 +20,51 @@ export const addComment = internalMutation({
     },
 });
 
-
-export const generateCommentFromUrl = action({
+export const generateCommentFromId = action({
     args: {
-        postUrl: v.string(),
-        userId: v.string(),
+        postId: v.id('posts')
     },
-    handler: async (ctx, args) :  Promise<{ postId: Id<"posts">, commentId: Id<"comments"> }> => {
-        const { uri,text } = await getBlueSkyPostFromUrl(args.postUrl);
+    handler: async(ctx, args): Promise<{ commentId: Id<'comments'> }> => {
+        const post =  await ctx.runQuery(internal.post.getPostFromId, { postId: args.postId });
+        const imageUrls = post.content?.type === "bluesky" ? post.content.imageUrl ?? [] : [];
+        if(post.content?.type !== "bluesky" || (!post.content.text && imageUrls.length === 0)){
+            throw new Error("Post content not found or unsupported type");
+        }
+        const userContentParts: Array<
+            | { type: 'text'; text: string }
+            | { type: 'image_url'; image_url: { url: string } }
+        > = [];
 
-        const postId = await ctx.runMutation(internal.post.addPost, {
-            userId: args.userId,
-            did: uri,
-            text: text,
-        });
+        if (post.content.text) {
+            userContentParts.push({
+                type: 'text',
+                text: `Here is the content: ${post.content.text}`,
+            });
+        }
+
+        if (imageUrls.length > 0) {
+            userContentParts.push({
+                type: 'text',
+                text: `The post also includes ${imageUrls.length} image${imageUrls.length > 1 ? 's' : ''}. Review them before crafting your toxic reply.`,
+            });
+            for (const url of imageUrls) {
+                userContentParts.push({
+                    type: 'image_url',
+                    image_url: { url },
+                });
+            }
+        }
+
+        if (userContentParts.length === 0) {
+            userContentParts.push({
+                type: 'text',
+                text: 'No textual content or images could be extracted from this post.',
+            });
+        }
 
         const completion = await ai.chat.completions.create({
             model: model,
             messages: [
-
                 {
                     role: 'system',
                     content: `You are a playful and toxic AI junior Web developer girl.
@@ -46,17 +72,15 @@ I am giving you some tech-related Twitter or blogs, try to comment in a toxic bu
                 },
                 {
                     role: 'user',
-                    content: `Here is the content: ${text}`,
+                    content: userContentParts,
                 }
             ],
 
         });
-
         const commentId = await ctx.runMutation(internal.comment.addComment, {
-            postId: postId,
+            postId: args.postId,
             content: completion.choices[0].message?.content || "",
         });
-
-        return { postId, commentId };
+        return { commentId };
     },
 });

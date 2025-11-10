@@ -7,11 +7,16 @@ import { v } from "convex/values";
 // The schema provides more precise TypeScript types.
 export default defineSchema({
   posts: defineTable({
-    userId: v.string(),
-    did: v.optional(v.string()),
-    text: v.optional(v.string()),
-    imageUrl: v.optional(v.array(v.string())),
-  }),
+    originUrl: v.string(),
+    content: v.optional(v.union(
+      v.object({
+        type: v.literal("bluesky"),
+        did: v.string(),
+        text: v.optional(v.string()),
+        imageUrl: v.optional(v.array(v.string())),
+      }),
+    )),
+  }).index('byOriginUrl',['originUrl']),
   comments: defineTable({
     postId: v.id('posts'),
     content: v.optional(v.string()),
