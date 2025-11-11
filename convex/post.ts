@@ -88,3 +88,12 @@ export const getPostFromId = internalQuery({
         return post;
     },
 });  
+
+export const getPostById = query({
+    args: {
+        postId: v.id('posts'),
+    },
+    handler: async (ctx, args) => {
+        return await ctx.db.get(args.postId);
+    },
+});

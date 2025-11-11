@@ -2,13 +2,24 @@ import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Flame, Zap } from "lucide-react"
 
-export function HeroSection() {
+type HeroSectionProps = {
+  postUrl?: string
+  onPostUrlChange?: (value: string) => void
+  onSubmit?: () => void
+}
+
+export function HeroSection(props: HeroSectionProps = {}) {
+  const { postUrl, onPostUrlChange, onSubmit } = props
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (onSubmit) {
+      onSubmit()
+      return
+    }
     const formData = new FormData(e.currentTarget)
     const url = formData.get("url") as string
     console.log("Submitted URL:", url)
-    // Handle URL submission
   }
 
   return (
@@ -56,6 +67,13 @@ export function HeroSection() {
                 placeholder="Drop your cringe here... I dare you 👀"
                 className="h-12 flex-1 border-border bg-background/80 px-4 text-base shadow-sm backdrop-blur-sm transition-all focus:border-primary/50 focus:shadow-md focus:shadow-primary/20"
                 required
+                {...(postUrl === undefined
+                  ? {}
+                  : {
+                      value: postUrl,
+                      onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
+                        onPostUrlChange?.(event.target.value),
+                    })}
               />
               <Button
                 type="submit"

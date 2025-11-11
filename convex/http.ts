@@ -77,6 +77,7 @@ I am giving you some tech-related Twitter or blogs, try to comment in a toxic bu
           content: userContentParts,
         },
       ],
+      reasoning_effort: 'minimal'
     });
 
     const encoder = new TextEncoder();

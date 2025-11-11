@@ -1,5 +1,5 @@
 import { v } from 'convex/values'
-import { action, internalMutation } from './_generated/server'
+import { action, internalMutation, query } from './_generated/server'
 import { internal } from './_generated/api'
 import { ai,model } from './lib/ai';
 import type { Id } from './_generated/dataModel';
@@ -81,5 +81,14 @@ I am giving you some tech-related Twitter or blogs, try to comment in a toxic bu
             content: completion.choices[0].message?.content || "",
         });
         return { commentId };
+    },
+});
+
+export const getCommentById = query({
+    args: {
+        commentId: v.id('comments'),
+    },
+    handler: async (ctx, args) => {
+        return await ctx.db.get(args.commentId);
     },
 });
