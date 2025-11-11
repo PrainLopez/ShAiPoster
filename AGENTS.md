@@ -4,6 +4,7 @@
 2. follow guidelines strictly
 3. If the task touches a listed scope or you are inside its folder, also read the matching file in AGENTS in addition to this file. If multiple entries match, read all of them.
 4. read document before read code
+5. update document before change code if document exists
 
 ## AGENTS folder
 
