@@ -366,8 +366,8 @@ function Home() {
         {renderSkeletonLines(4)}
         <p className="text-xs text-muted-foreground">
           {isWaiting
-            ? '评论生成中，请稍候…'
-            : '提交一个链接，看看我怎么吐槽它。'}
+            ? 'Generatiing...'
+            : 'Submit a Bluesky post URL to get a toxic comment by an annoyed AI junior!'}
         </p>
       </div>
     );
@@ -403,7 +403,7 @@ function Home() {
                   {renderPostCardBody()}
                   {activePost?.originUrl ? (
                     <p className="text-xs text-muted-foreground">
-                      发布于 {postHostname}
+                      published on {postHostname}
                     </p>
                   ) : null}
                 </BlueskyCard>
@@ -411,7 +411,7 @@ function Home() {
                 <div ref={commentCardRef}>
                   <BlueskyCard
                     title="AI Comment"
-                    subtitle="实时生成"
+                    subtitle="@shai_poster"
                     avatarVariant="secondary"
                   >
                     {renderCommentBody()}
@@ -437,7 +437,7 @@ function Home() {
                     }}
                   >
                     <RefreshCcw className="h-4 w-4" />
-                    再来一条
+                    Try again
                   </Button>
                   <Button
                     variant="outline"
@@ -446,7 +446,7 @@ function Home() {
                     onClick={handleCopyLink}
                   >
                     <Copy className="h-4 w-4" />
-                    复制链接
+                    Copy Link
                   </Button>
                   <Button
                     variant="ghost"
@@ -455,7 +455,7 @@ function Home() {
                     onClick={handleShareLink}
                   >
                     <Share2 className="h-4 w-4" />
-                    分享
+                    Share
                   </Button>
                 </div>
               ) : null}

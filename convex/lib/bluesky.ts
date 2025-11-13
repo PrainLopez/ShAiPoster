@@ -36,10 +36,10 @@ async function resolveDid(actor: string): Promise<string> {
   });
   if (!res.ok) {
     const body = await res.text().catch(() => '');
-    throw new Error(`resolveHandle 失败 (${res.status}): ${body}`);
+    throw new Error(`resolveHandle failed (${res.status}): ${body}`);
   }
   const json = (await res.json()) as { did?: string };
-  if (!json.did) throw new Error('未解析到 DID。');
+  if (!json.did) throw new Error('Missing DID.');
   return json.did;
 }
 
