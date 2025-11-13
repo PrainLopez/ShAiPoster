@@ -1,4 +1,4 @@
-## rule 
+## rule
 
 1. response in chinese
 2. follow guidelines strictly
@@ -14,8 +14,8 @@
 ## file convention
 
 - 文档名与模块文件名一致，使用 kebab-case 风格命名文件，放在对应模块源码文件夹内
- - ui/button.tsx 对应 ui/button.md
- - auth/index.ts 对应 auth/auth.md
+- ui/button.tsx 对应 ui/button.md
+- auth/index.ts 对应 auth/auth.md
 - AGENTS/: documentation for agents
 - convex/: backend code
 - src/: frontend code
@@ -25,7 +25,7 @@
   - src/hooks/: shared logic hooks
   - src/lib/: shared libraries and utils
 
-## project stack 
+## project stack
 
 - pnpm
 - typescript
@@ -36,7 +36,6 @@
   - shadcn/ui
 - backend
   - convex
-
 
 ## code style guidelines
 

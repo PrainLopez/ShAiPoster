@@ -7,8 +7,8 @@ import { ai, model } from './lib/ai';
 const http = httpRouter();
 
 http.route({
-  path: "/comment/completion",
-  method: "GET",
+  path: '/comment/completion',
+  method: 'GET',
   handler: httpAction(async (ctx, request) => {
     const url = new URL(request.url);
     const postIdParam = url.searchParams.get('postId');
@@ -16,6 +16,7 @@ http.route({
       return new Response('Missing postId', { status: 400 });
     }
 
+    // FIXME: Validate postId format
     const postId = postIdParam as Id<'posts'>;
 
     let post; // Ensure the post exists before streaming.
@@ -26,32 +27,31 @@ http.route({
       return new Response(message, { status: 404 });
     }
 
-    const imageUrls = post.content?.type === 'bluesky' ? post.content.imageUrl ?? [] : [];
+    const imageUrls = post.content?.type === 'bluesky' ? (post.content.imageUrl ?? []) : [];
     if (post.content?.type !== 'bluesky' || (!post.content.text && imageUrls.length === 0)) {
-      return new Response('Post content not found or unsupported type', { status: 422 });
+      return new Response('Post content not found or unsupported type', {
+        status: 422
+      });
     }
 
-    const userContentParts: Array<
-      | { type: 'text'; text: string }
-      | { type: 'image_url'; image_url: { url: string } }
-    > = [];
+    const userContentParts: Array<{ type: 'text'; text: string } | { type: 'image_url'; image_url: { url: string } }> = [];
 
     if (post.content.text) {
       userContentParts.push({
         type: 'text',
-        text: `Here is the content: ${post.content.text}`,
+        text: `Here is the content: ${post.content.text}`
       });
     }
 
     if (imageUrls.length > 0) {
       userContentParts.push({
         type: 'text',
-        text: `The post also includes ${imageUrls.length} image${imageUrls.length > 1 ? 's' : ''}. Review them before crafting your toxic reply.`,
+        text: `The post also includes ${imageUrls.length} image${imageUrls.length > 1 ? 's' : ''}. Review them before crafting your toxic reply.`
       });
       for (const url of imageUrls) {
         userContentParts.push({
           type: 'image_url',
-          image_url: { url },
+          image_url: { url }
         });
       }
     }
@@ -59,7 +59,7 @@ http.route({
     if (userContentParts.length === 0) {
       userContentParts.push({
         type: 'text',
-        text: 'No textual content or images could be extracted from this post.',
+        text: 'No textual content or images could be extracted from this post.'
       });
     }
 
@@ -70,12 +70,12 @@ http.route({
         {
           role: 'system',
           content: `You are a playful and toxic AI junior Web developer girl.
-I am giving you some tech-related Twitter or blogs, try to comment in a toxic but reasonable way.`,
+I am giving you some tech-related Twitter or blogs, try to comment in a toxic but reasonable way. Control the length within 50 words.`
         },
         {
           role: 'user',
-          content: userContentParts,
-        },
+          content: userContentParts
+        }
       ],
       reasoning_effort: 'minimal'
     });
@@ -104,7 +104,7 @@ I am giving you some tech-related Twitter or blogs, try to comment in a toxic bu
 
           const commentId = await ctx.runMutation(internal.comment.addComment, {
             postId,
-            content,
+            content
           });
 
           send({ commentId }, 'complete');
@@ -114,7 +114,7 @@ I am giving you some tech-related Twitter or blogs, try to comment in a toxic bu
           send({ message }, 'error');
           controller.close();
         }
-      },
+      }
     });
 
     return new Response(readable, {
@@ -123,9 +123,9 @@ I am giving you some tech-related Twitter or blogs, try to comment in a toxic bu
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache, no-transform',
         Connection: 'keep-alive',
-        'Access-Control-Allow-Origin': '*',
-      },
+        'Access-Control-Allow-Origin': '*'
+      }
     });
-  }),
+  })
 });
 export default http;

@@ -24,7 +24,10 @@ export const generateCommentFromId = action({
         postId: v.id('posts')
     },
     handler: async(ctx, args): Promise<{ commentId: Id<'comments'> }> => {
-        const post =  await ctx.runQuery(internal.post.getPostFromId, { postId: args.postId });
+        const post = await ctx.runQuery(internal.post.getPostFromId, { postId: args.postId });
+        if (!post) {
+          throw new Error('Post not found');
+        }
         const imageUrls = post.content?.type === "bluesky" ? post.content.imageUrl ?? [] : [];
         if(post.content?.type !== "bluesky" || (!post.content.text && imageUrls.length === 0)){
             throw new Error("Post content not found or unsupported type");

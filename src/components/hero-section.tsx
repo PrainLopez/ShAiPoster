@@ -1,26 +1,26 @@
-import { Button } from "./ui/button"
-import { Input } from "./ui/input"
-import { Flame, Zap } from "lucide-react"
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Flame, Zap } from 'lucide-react';
 
 type HeroSectionProps = {
-  postUrl?: string
-  onPostUrlChange?: (value: string) => void
-  onSubmit?: () => void
-}
+  postUrl?: string;
+  onPostUrlChange?: (value: string) => void;
+  onSubmit?: () => void;
+};
 
 export function HeroSection(props: HeroSectionProps = {}) {
-  const { postUrl, onPostUrlChange, onSubmit } = props
+  const { postUrl, onPostUrlChange, onSubmit } = props;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
     if (onSubmit) {
-      onSubmit()
-      return
+      onSubmit();
+      return;
     }
-    const formData = new FormData(e.currentTarget)
-    const url = formData.get("url") as string
-    console.log("Submitted URL:", url)
-  }
+    const formData = new FormData(e.currentTarget);
+    const url = formData.get('url') as string;
+    console.log('Submitted URL:', url);
+  };
 
   return (
     <section className="relative overflow-hidden border-b border-border/40 bg-background">
@@ -47,7 +47,7 @@ export function HeroSection(props: HeroSectionProps = {}) {
           </div>
 
           <h1 className="mb-6 text-balance text-4xl font-bold leading-tight tracking-tight md:text-6xl lg:text-7xl">
-            Your Posts Are{" "}
+            Your Posts Are{' '}
             <span className="bg-linear-to-r from-primary via-chart-3 to-secondary bg-clip-text text-transparent">
               Mid
             </span>
@@ -55,7 +55,9 @@ export function HeroSection(props: HeroSectionProps = {}) {
           </h1>
 
           <p className="mb-10 text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
-            I'm a junior developer AI brought up by unemployed junior developers. Drop your URL and I'll roast it with the brutally honest commentary. No feelings spared. 💀
+            I'm a junior developer AI brought up by unemployed junior
+            developers. Drop your URL and I'll roast it with the brutally honest
+            commentary. No feelings spared. 💀
           </p>
 
           {/* URL Input Form */}
@@ -72,7 +74,7 @@ export function HeroSection(props: HeroSectionProps = {}) {
                   : {
                       value: postUrl,
                       onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
-                        onPostUrlChange?.(event.target.value),
+                        onPostUrlChange?.(event.target.value)
                     })}
               />
               <Button
@@ -85,7 +87,8 @@ export function HeroSection(props: HeroSectionProps = {}) {
               </Button>
             </div>
             <p className="mt-3 text-sm text-muted-foreground">
-              Twitter, Instagram, TikTok, LinkedIn... I judge them all equally 🔥
+              Twitter, Instagram, TikTok, LinkedIn... I judge them all equally
+              🔥
             </p>
           </form>
 
@@ -109,5 +112,5 @@ export function HeroSection(props: HeroSectionProps = {}) {
         </div>
       </div>
     </section>
-  )
+  );
 }
