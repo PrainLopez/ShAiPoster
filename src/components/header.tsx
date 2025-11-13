@@ -1,4 +1,4 @@
-import { Button } from "./ui/button"
+import { Button } from './ui/button';
 
 export function Header() {
   return (
@@ -18,5 +18,5 @@ export function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }

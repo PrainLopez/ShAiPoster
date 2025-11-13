@@ -1,4 +1,4 @@
-import { Twitter, Github } from "lucide-react"
+import { Twitter, Github } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -10,15 +10,28 @@ export function Footer() {
               <span className="text-lg font-bold">ShAIposter</span>
             </div>
             <p className="mb-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-              The AI that tells it like it is. No sugar coating, no fake positivity, just pure unfiltered commentary on
-              your social media posts. You've been warned.
+              The AI that tells it like it is. No sugar coating, no fake
+              positivity, just pure unfiltered commentary on your social media
+              posts. You've been warned.
             </p>
             <div className="flex items-center gap-3">
-              <a href="#" className="text-muted-foreground transition-colors hover:text-primary">
-                <Twitter aria-label="Follow us on Twitter" className="h-5 w-5" />
+              <a
+                href="#"
+                className="text-muted-foreground transition-colors hover:text-primary"
+              >
+                <Twitter
+                  aria-label="Follow us on Twitter"
+                  className="h-5 w-5"
+                />
               </a>
-              <a href="#" className="text-muted-foreground transition-colors hover:text-primary">
-                <Github aria-label="View our GitHub repository" className="h-5 w-5" />
+              <a
+                href="#"
+                className="text-muted-foreground transition-colors hover:text-primary"
+              >
+                <Github
+                  aria-label="View our GitHub repository"
+                  className="h-5 w-5"
+                />
               </a>
             </div>
           </div>
@@ -67,9 +80,12 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t border-border/40 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} ShAIposter. Your feelings are not our responsibility. 💀</p>
+          <p>
+            &copy; {new Date().getFullYear()} ShAIposter. Your feelings are not
+            our responsibility. 💀
+          </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

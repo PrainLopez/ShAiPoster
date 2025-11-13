@@ -1,15 +1,26 @@
-import { Button } from "./ui/button"
-import { Input } from "./ui/input"
-import { Flame, Zap } from "lucide-react"
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Flame, Zap } from 'lucide-react';
 
-export function HeroSection() {
+type HeroSectionProps = {
+  postUrl?: string;
+  onPostUrlChange?: (value: string) => void;
+  onSubmit?: () => void;
+};
+
+export function HeroSection(props: HeroSectionProps = {}) {
+  const { postUrl, onPostUrlChange, onSubmit } = props;
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    const url = formData.get("url") as string
-    console.log("Submitted URL:", url)
-    // Handle URL submission
-  }
+    e.preventDefault();
+    if (onSubmit) {
+      onSubmit();
+      return;
+    }
+    const formData = new FormData(e.currentTarget);
+    const url = formData.get('url') as string;
+    console.log('Submitted URL:', url);
+  };
 
   return (
     <section className="relative overflow-hidden border-b border-border/40 bg-background">
@@ -36,7 +47,7 @@ export function HeroSection() {
           </div>
 
           <h1 className="mb-6 text-balance text-4xl font-bold leading-tight tracking-tight md:text-6xl lg:text-7xl">
-            Your Posts Are{" "}
+            Your Posts Are{' '}
             <span className="bg-linear-to-r from-primary via-chart-3 to-secondary bg-clip-text text-transparent">
               Mid
             </span>
@@ -44,7 +55,9 @@ export function HeroSection() {
           </h1>
 
           <p className="mb-10 text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
-            I'm a junior developer AI brought up by unemployed junior developers. Drop your URL and I'll roast it with the brutally honest commentary. No feelings spared. 💀
+            I'm a junior developer AI brought up by unemployed junior
+            developers. Drop your URL and I'll roast it with the brutally honest
+            commentary. No feelings spared. 💀
           </p>
 
           {/* URL Input Form */}
@@ -56,6 +69,13 @@ export function HeroSection() {
                 placeholder="Drop your cringe here... I dare you 👀"
                 className="h-12 flex-1 border-border bg-background/80 px-4 text-base shadow-sm backdrop-blur-sm transition-all focus:border-primary/50 focus:shadow-md focus:shadow-primary/20"
                 required
+                {...(postUrl === undefined
+                  ? {}
+                  : {
+                      value: postUrl,
+                      onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
+                        onPostUrlChange?.(event.target.value)
+                    })}
               />
               <Button
                 type="submit"
@@ -67,7 +87,8 @@ export function HeroSection() {
               </Button>
             </div>
             <p className="mt-3 text-sm text-muted-foreground">
-              Twitter, Instagram, TikTok, LinkedIn... I judge them all equally 🔥
+              Twitter, Instagram, TikTok, LinkedIn... I judge them all equally
+              🔥
             </p>
           </form>
 
@@ -91,5 +112,5 @@ export function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
