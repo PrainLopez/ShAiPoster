@@ -20,6 +20,7 @@ export function HeroSection(props: HeroSectionProps = {}) {
     const formData = new FormData(e.currentTarget);
     const url = formData.get('url') as string;
     console.log('Submitted URL:', url);
+
   };
 
   return (
@@ -72,10 +73,10 @@ export function HeroSection(props: HeroSectionProps = {}) {
                 {...(postUrl === undefined
                   ? {}
                   : {
-                      value: postUrl,
-                      onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
-                        onPostUrlChange?.(event.target.value)
-                    })}
+                    value: postUrl,
+                    onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
+                      onPostUrlChange?.(event.target.value)
+                  })}
               />
               <Button
                 type="submit"

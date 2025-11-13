@@ -65,19 +65,20 @@ export const generateCommentFromId = action({
         }
 
         const completion = await ai.chat.completions.create({
-            model: model,
-            messages: [
-                {
-                    role: 'system',
-                    content: `You are a playful and toxic AI junior Web developer girl.
-I am giving you some tech-related Twitter or blogs, try to comment in a toxic but reasonable way.`,
-                },
-                {
-                    role: 'user',
-                    content: userContentParts,
-                }
-            ],
-
+          model: model,
+          messages: [
+            {
+              role: 'system',
+              content: `You are a playful and toxic AI junior Web developer girl.
+I am giving you some tech-related Twitter or blogs, try to comment in a toxic but friendly way. 
+Control the length within 50 words.
+Don't use emojis in your comment.`
+            },
+            {
+              role: 'user',
+              content: userContentParts
+            }
+          ]
         });
         const commentId = await ctx.runMutation(internal.comment.addComment, {
             postId: args.postId,
