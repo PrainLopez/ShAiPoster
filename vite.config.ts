@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import tailwindcss from '@tailwindcss/vite';
 import viteReact from '@vitejs/plugin-react';
+import netlify from '@netlify/vite-plugin-tanstack-start';
 
 export default defineConfig({
   server: {},
@@ -12,6 +13,7 @@ export default defineConfig({
       projects: ['./tsconfig.json']
     }),
     tanstackStart(),
-    viteReact()
+    viteReact(),
+    netlify()
   ]
 });
