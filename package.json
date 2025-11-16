@@ -9,7 +9,7 @@
     "dev:ts": "tsc -b -w",
     "dev:convex": "pnpx convex dev",
     "build": "vite build && tsc --noEmit",
-    "start": "node .output/server/index.mjs",
+    "serve": "vite preview",
     "format": "prettier --write .",
     "lint": "tsc && eslint .  --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
@@ -24,6 +24,7 @@
     "clsx": "^2.1.1",
     "convex": "^1.28.2",
     "lucide-react": "^0.553.0",
+    "nitro": "3.0.1-alpha.1",
     "openai": "^6.8.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -48,8 +49,11 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
+      "@parcel/watcher",
       "@tailwindcss/oxide",
       "esbuild",
+      "protobufjs",
+      "sharp",
       "unrs-resolver"
     ]
   }
