@@ -4,7 +4,7 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "dev": "pnpx convex dev --once && concurrently -r npm:dev:web npm:dev:convex",
+    "dev": "pnpx convex dev --once && concurrently -r pnpm:dev:web pnpm:dev:convex",
     "dev:web": "vite dev",
     "dev:ts": "tsc -b -w",
     "dev:convex": "pnpx convex dev",
@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@convex-dev/eslint-plugin": "^1.0.0",
+    "@netlify/vite-plugin-tanstack-start": "^1.1.12",
     "@tailwindcss/vite": "^4.1.16",
     "@tanstack/eslint-config": "^0.3.2",
     "@types/node": "^24.10.0",

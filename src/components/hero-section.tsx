@@ -20,6 +20,7 @@ export function HeroSection(props: HeroSectionProps = {}) {
     const formData = new FormData(e.currentTarget);
     const url = formData.get('url') as string;
     console.log('Submitted URL:', url);
+
   };
 
   return (
@@ -51,7 +52,8 @@ export function HeroSection(props: HeroSectionProps = {}) {
             <span className="bg-linear-to-r from-primary via-chart-3 to-secondary bg-clip-text text-transparent">
               Mid
             </span>
-            . Let Me Fix That.
+            ,<br />
+            Let Me Fix That.
           </h1>
 
           <p className="mb-10 text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
@@ -72,10 +74,10 @@ export function HeroSection(props: HeroSectionProps = {}) {
                 {...(postUrl === undefined
                   ? {}
                   : {
-                      value: postUrl,
-                      onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
-                        onPostUrlChange?.(event.target.value)
-                    })}
+                    value: postUrl,
+                    onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
+                      onPostUrlChange?.(event.target.value)
+                  })}
               />
               <Button
                 type="submit"

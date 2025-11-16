@@ -209,6 +209,12 @@ function Home() {
     clearCommentState();
     setPendingPostId(null);
     resetCommentStream();
+    setTimeout(() => {
+      const postCardElement = document.getElementById('post-card');
+      if (postCardElement) {
+        postCardElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 500);
 
     void addPost({ postUrl: trimmed })
       .then((result) => {
@@ -366,7 +372,7 @@ function Home() {
         {renderSkeletonLines(4)}
         <p className="text-xs text-muted-foreground">
           {isWaiting
-            ? 'Generatiing...'
+            ? 'Generating...'
             : 'Submit a Bluesky post URL to get a toxic comment by an annoyed AI junior!'}
         </p>
       </div>
@@ -396,6 +402,7 @@ function Home() {
             <div className="container mx-auto px-4 py-16 md:px-6 md:py-20">
               <div className="mt-10 grid gap-6 lg:grid-cols-2">
                 <BlueskyCard
+                  id="post-card"
                   title="Bluesky Preview"
                   subtitle={postHostname}
                   contentClassName="space-y-5"
