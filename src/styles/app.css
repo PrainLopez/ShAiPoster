@@ -190,3 +190,15 @@
     animation-delay: 2s;
   }
 }
+
+.marker {
+  font-family: 'Permanent Marker', cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fuzzy {
+  font-family: 'Fuzzy Bubbles', cursive;
+  font-weight: 400;
+  font-style: normal;
+}
