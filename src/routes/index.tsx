@@ -320,7 +320,7 @@ function Home() {
           {renderSkeletonLines(3)}
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Loader2 className="h-4 w-4 animate-spin text-primary" />
-            正在同步帖子内容...
+            Fetching thread...
           </div>
         </div>
       );
