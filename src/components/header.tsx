@@ -9,12 +9,7 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="sm" className="hidden md:inline-flex">
-            Sign In
-          </Button>
-          <Button size="sm" className="shadow-md shadow-primary/20">
-            Get Roasted
-          </Button>
+
         </div>
       </div>
     </header>

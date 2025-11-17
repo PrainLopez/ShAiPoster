@@ -41,17 +41,17 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
                 <a href="#" className="transition-colors hover:text-foreground">
-                  How It Works
+                  How I Roast
                 </a>
               </li>
               <li>
                 <a href="#" className="transition-colors hover:text-foreground">
-                  Roast Examples
+                  Cringe Examples
                 </a>
               </li>
               <li>
                 <a href="#" className="transition-colors hover:text-foreground">
-                  API Access
+                  I don't have a price lol
                 </a>
               </li>
             </ul>
@@ -62,17 +62,17 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
                 <a href="#" className="transition-colors hover:text-foreground">
-                  Terms of Roasting
+                  Terms of Shitposting
                 </a>
               </li>
               <li>
                 <a href="#" className="transition-colors hover:text-foreground">
-                  Privacy Policy
+                  It's fine, I guess
                 </a>
               </li>
               <li>
                 <a href="#" className="transition-colors hover:text-foreground">
-                  Contact
+                  Call me maybe
                 </a>
               </li>
             </ul>

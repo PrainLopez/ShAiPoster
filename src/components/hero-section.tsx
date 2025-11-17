@@ -44,12 +44,12 @@ export function HeroSection(props: HeroSectionProps = {}) {
         <div className="mx-auto max-w-4xl text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-linear-to-r from-primary/15 via-primary/10 to-primary/5 px-4 py-1.5 text-sm font-medium text-primary shadow-lg shadow-primary/20 backdrop-blur-sm">
             <Flame className="h-4 w-4 animate-pulse" />
-            <span>Brutally Honest AI • No Filter Mode</span>
+            <span>Brutally Honest AI • *Filtered*</span>
           </div>
 
-          <h1 className="mb-6 text-balance text-4xl font-bold leading-tight tracking-tight md:text-6xl lg:text-7xl">
+          <h1 className="mb-6 text-balance text-4xl font-bold leading-tight tracking-tight md:text-6xl lg:text-7xl fuzzy">
             Your Posts Are{' '}
-            <span className="bg-linear-to-r from-primary via-chart-3 to-secondary bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-primary via-chart-3 to-secondary bg-clip-text text-transparent marker">
               Mid
             </span>
             ,<br />
@@ -82,29 +82,29 @@ export function HeroSection(props: HeroSectionProps = {}) {
               <Button
                 type="submit"
                 size="lg"
-                className="h-12 gap-2 bg-linear-to-r from-secondary to-primary px-6 shadow-lg shadow-primary/30 transition-all hover:opacity-90"
+                className="h-12 gap-2 bg-linear-to-r from-secondary to-primary px-6 shadow-lg shadow-primary/30 transition-all hover:opacity-90 fuzzy text-lg"
               >
                 Roast Me
                 <Zap className="h-4 w-4" />
               </Button>
             </div>
             <p className="mt-3 text-sm text-muted-foreground">
-              Twitter, Instagram, TikTok, LinkedIn... I judge them all equally
+              Twitter (bsky atm), Instagram (no), LinkedIn (Really?)... I judge them all equally
               🔥
             </p>
           </form>
 
           <div className="flex flex-wrap items-center justify-center gap-8 text-sm md:gap-12">
             <div className="flex flex-col gap-1">
-              <div className="text-2xl font-bold">0K+</div>
+              <div className="text-2xl font-bold fuzzy">1K-</div>
               <div className="text-muted-foreground">Posts Destroyed</div>
             </div>
             <div className="flex flex-col gap-1">
-              <div className="text-2xl font-bold">idk...</div>
+              <div className="text-2xl font-bold fuzzy">idk...</div>
               <div className="text-muted-foreground">Egos Bruised</div>
             </div>
             <div className="flex flex-col gap-1">
-              <div className="flex items-center justify-center gap-1 text-2xl font-bold">
+              <div className="flex items-center justify-center gap-1 text-2xl font-bold fuzzy">
                 <Flame className="h-5 w-5 text-destructive" />
                 186%
               </div>
